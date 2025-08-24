@@ -122,7 +122,7 @@ Need help with setup, customization, or error troubleshooting?
 
 <h2>🔐 Security Policy</h2>
 <p>If you discover a vulnerability, <strong>do not</strong> open a public issue.<br>
-Email your report to <em>[maintainer-email@example.com]</em>.</p>
+Email your report to <em>[support@puffxhost.in]</em>.</p>
 
 <hr>
 
