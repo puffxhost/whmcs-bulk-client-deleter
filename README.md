@@ -90,12 +90,12 @@ modules/
 
 <hr>
 
-<h2>🙋 Support</h2>
-<ul>
-  <li><strong>Issues:</strong> Open a GitHub issue</li>
-  <li><strong>Feature requests:</strong> Open an enhancement issue</li>
-  <li><strong>Security:</strong> Email maintainer privately</li>
-</ul>
+### 📞 Support
+Need help with setup, customization, or error troubleshooting?
+<p>📧 Email: <a href="mailto:support@puffxhost.in" target="_blank">support@puffxhost.in</a><br>
+     🌐 Website: <a href="https://pay.x-server.in/" target="_blank">https://pay.x-server.in</a><br>
+     📱 WhatsApp: <a href="https://wa.me/918602967573" target="_blank">+91 8602967573</a><br>
+  </p>
 
 <hr>
 
@@ -128,6 +128,16 @@ Email your report to <em>[maintainer-email@example.com]</em>.</p>
 
 <h2>📄 License</h2>
 <p>This project is licensed under the <strong>MIT License</strong>.</p>
+
+👨‍💻 Author</h2>
+  <p>Made with ❤️ by <a href="https://github.com/puffxhost" target="_blank">Nitin Mehta</a><br>
+     Instagram: <a href="https://instagram.com/unknown_coder1x" target="_blank">@unknown_coder1x</a>
+  </p>
+
+<hr>
+<p align="center">
+  Developed with ❤️ by <strong>Puffx Host</strong>
+</p>
 
 </body>
 </html>
