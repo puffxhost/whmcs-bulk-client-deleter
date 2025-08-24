@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>WHMCS Bulk Client Deleter</title>
-</head>
-<body>
+
 
 <h1>WHMCS Bulk Client Deleter</h1>
 
@@ -39,28 +33,13 @@
 
 <hr>
 
-<h2>📸 Screenshots</h2>
-<ul>
-  <li><code>screenshot-01.png</code> – Addon page with filters</li>
-  <li><code>screenshot-02.png</code> – Clients list + bulk selection</li>
-  <li><code>screenshot-03.png</code> – Confirmation modal</li>
-</ul>
 
-<pre>
-docs/
-└─ assets/
-   ├─ screenshot-01.png
-   ├─ screenshot-02.png
-   └─ screenshot-03.png
-</pre>
-
-<hr>
 
 <h2>🚀 Installation</h2>
 <ol>
   <li><strong>Download / Clone</strong> this repository.</li>
   <li><strong>Extract</strong> the folder to your WHMCS installation at:<br>
-      <code>/modules/addons/bulk-client-deleter</code>
+      <code>/modules/addons/deleteclients</code>
   </li>
   <li>In WHMCS, go to <strong>Setup → Addon Modules</strong>.</li>
   <li>Find <strong>Bulk Client Deleter</strong> and click <strong>Activate</strong>.</li>
@@ -99,14 +78,14 @@ docs/
 <pre>
 modules/
 └─ addons/
-   └─ bulk-client-deleter/
-      ├─ bulk-client-deleter.php
-      ├─ hooks.php
-      ├─ controllers/
-      ├─ templates/
+   └─ deleteclients/
       ├─ lang/
-      ├─ config.json
-      └─ README.html
+      │   └─ english.php
+      ├─ templates/
+      │   └─ manage.tpl
+      └─ deleteclients.php
+├─ LICENSE
+└─ README.html
 </pre>
 
 <hr>
