@@ -207,6 +207,9 @@ function deleteclients_output($vars)
 
     // Handle form submission
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['client_ids'])) {
+        if (!function_exists('check_token') || !check_token('WHMCS.admin.default')) {
+            echo '<div class="alert alert-error">Security token invalid or expired. Reload the page and try again.</div>';
+        } else {
         $clientIds = $_POST['client_ids'];
         $successCount = 0;
         $errorCount = 0;
@@ -216,14 +219,23 @@ function deleteclients_output($vars)
                 // Start transaction for each client
                 Capsule::connection()->transaction(function() use ($clientId) {
                     // Delete related data first to maintain referential integrity
+                    $invoiceIds = Capsule::table('tblinvoices')->where('userid', $clientId)->pluck('id');
+                    $ticketIds = Capsule::table('tbltickets')->where('userid', $clientId)->pluck('id');
+
                     Capsule::table('tblorders')->where('userid', $clientId)->delete();
                     Capsule::table('tblhosting')->where('userid', $clientId)->delete();
                     Capsule::table('tbldomains')->where('userid', $clientId)->delete();
+                    if ($invoiceIds->isNotEmpty() && Capsule::schema()->hasTable('tblinvoiceitems')) {
+                        Capsule::table('tblinvoiceitems')->whereIn('invoiceid', $invoiceIds)->delete();
+                    }
                     Capsule::table('tblinvoices')->where('userid', $clientId)->delete();
-                    Capsule::table('tblinvoiceitems')->where('userid', $clientId)->delete();
-                    Capsule::table('tbltransactions')->where('userid', $clientId)->delete();
+                    if (Capsule::schema()->hasTable('tbltransactions')) {
+                        Capsule::table('tbltransactions')->where('userid', $clientId)->delete();
+                    }
+                    if ($ticketIds->isNotEmpty() && Capsule::schema()->hasTable('tblticketreplies')) {
+                        Capsule::table('tblticketreplies')->whereIn('tid', $ticketIds)->delete();
+                    }
                     Capsule::table('tbltickets')->where('userid', $clientId)->delete();
-                    Capsule::table('tblticketreplies')->where('userid', $clientId)->delete();
                     Capsule::table('tblnotes')->where('userid', $clientId)->delete();
                     
                     // Finally delete the client
@@ -238,6 +250,7 @@ function deleteclients_output($vars)
 
         if ($successCount > 0) {
             echo '<div class="alert alert-success">Successfully deleted ' . $successCount . ' client(s). ' . ($errorCount > 0 ? 'Failed to delete ' . $errorCount . ' client(s).' : '') . '</div>';
+        }
         }
     }
 
