@@ -347,6 +347,7 @@ function deleteclients_output($vars)
 
     // Client deletion form
     echo '<form method="post" onsubmit="return confirm(\'Are you sure you want to delete the selected clients? This will permanently delete all their data including orders, services, invoices, and transactions.\')">';
+    echo generate_token("form");
     echo '<table class="client-table">';
     echo '<thead><tr>';
     echo '<th width="50px"><input type="checkbox" id="select-all"></th>';
