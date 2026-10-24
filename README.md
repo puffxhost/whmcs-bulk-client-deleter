@@ -141,3 +141,16 @@ Email your report to <em>[support@puffxhost.in]</em>.</p>
 
 </body>
 </html>
+
+## 🛟 Support & Contact
+
+Need help or want to report an issue?
+
+- 🌐 Website: [puffxhost.com/contact](https://puffxhost.com/contact)
+- 📧 Email: [support@puffxhost.in](mailto:support@puffxhost.in)
+- 📞 Call: [+91 8602967573](https://wa.me/918602967573)
+- 💬 WhatsApp: [+91 7354336624](https://wa.me/917354336624)
+
+## ⭐️ Give a Star
+
+If you found this project useful, please consider giving it a star on GitHub to support its development.
