@@ -229,8 +229,13 @@ function deleteclients_output($vars)
                         Capsule::table('tblinvoiceitems')->whereIn('invoiceid', $invoiceIds)->delete();
                     }
                     Capsule::table('tblinvoices')->where('userid', $clientId)->delete();
-                    if (Capsule::schema()->hasTable('tbltransactions')) {
-                        Capsule::table('tbltransactions')->where('userid', $clientId)->delete();
+                    // WHMCS stores transactions in tblaccounts (there is no tbltransactions table).
+                    if (Capsule::schema()->hasTable('tblaccounts')) {
+                        Capsule::table('tblaccounts')->where('userid', $clientId)->delete();
+                    }
+                    // tbltransaction_history has no userid column; it is linked to the client via invoiceid.
+                    if ($invoiceIds->isNotEmpty() && Capsule::schema()->hasTable('tbltransaction_history')) {
+                        Capsule::table('tbltransaction_history')->whereIn('invoiceid', $invoiceIds)->delete();
                     }
                     if ($ticketIds->isNotEmpty() && Capsule::schema()->hasTable('tblticketreplies')) {
                         Capsule::table('tblticketreplies')->whereIn('tid', $ticketIds)->delete();
